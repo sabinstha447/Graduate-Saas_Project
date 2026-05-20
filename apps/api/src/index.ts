@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { tenantMiddleware } from "./middleware/tenant";
 import issuesRouter from "./routes/issues";
+import dashboardRouter from "./routes/dashboard";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.get("/health", (_req, res) => {
 
 app.use("/api", tenantMiddleware);
 app.use("/api/issues", issuesRouter);
+app.use("/api/dashboard", dashboardRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
